@@ -1,4 +1,5 @@
 - [前端笔记](FrontEnd/)
-  - [再谈Javascript作用域与闭包](FrontEnd/closure.md)
-  - [JavaScript中的this与call&apply&bind](FrontEnd/this.md)
-  - [Vue笔记](FrontEnd/Vue/)
+  - [Vue](FrontEnd/Vue/)
+  - [基础技术](FrontEnd/Basic/)
+    - [再谈Javascript作用域与闭包](FrontEnd/Basic/closure.md)
+    - [JavaScript中的this与call&apply&bind](FrontEnd/Basic/this.md)

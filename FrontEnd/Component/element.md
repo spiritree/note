@@ -4,7 +4,13 @@
 
 ![生命周期](https://om4v1ul08.qnssl.com/vue/lifecycle.png)
 
-## Table 组件的增删改
+使用方法：
+
+1. created: axios的异步请求
+2. beforeUpdate: 2个页面使用同一个子组件异步请求获取Table数据更新页面
+3. nextTick: 更新数据后立即操作DOM（在mounted中）
+
+## Table 组件的增删改
 
 Vue是一个MVVM框架，我们传统写代码是命令式编程（代表库JQuery），拿到Table这个DOM之后就是命令式对DOM增删改。而我们现在用MVVM框架，只用关注data的变化和View层就好了，所以我们这里的增删改都是基于list这个数组来的。
 
