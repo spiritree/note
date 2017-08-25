@@ -73,7 +73,7 @@ webpack 最核心的功能：
 花费400KB+大小的图标库来使用一个图标有点得不偿失，寻找element自带图标替代方案
 
 ![menucollapse1.png](https://i.loli.net/2017/08/23/599d799ce5aaf.png)
-![menucollapse2.png](https://i.loli.net/2017/08/23/599d799ce4aed.png)
+![menucollapse3.png](https://i.loli.net/2017/08/25/59a0216fdae0f.png)
 
 替代完成后，删除import引用
 
