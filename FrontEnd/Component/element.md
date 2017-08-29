@@ -3,7 +3,7 @@
 
 使用element的Table组件从后端获取列表数据
 
-![生命周期](../../assets/FrontEnd/Component/element/vue-lifecycle.png)
+![生命周期](/assets/FrontEnd/Component/element/vue-lifecycle.png)
 
 使用方法：
 
@@ -38,7 +38,7 @@ this.list.splice(index, 1, this.updatedData); // 通过splice 替换数据 触�
 
 使用 Vue 的 [Scoped slot](https://cn.vuejs.org/v2/guide/components.html#Scoped-Slots) 即可：
 
-![scope.png](../../assets/FrontEnd/Component/element/element-scope.png)
+![scope.png](/assets/FrontEnd/Component/element/element-scope.png)
 
 ```html
 <el-table-column label="操作">
@@ -108,7 +108,7 @@ var demo = new Vue({
 
 发现输入框宽度不对称
 
-![element0.png](../../assets/FrontEnd/Component/element/element0.png)
+![element0.png](/assets/FrontEnd/Component/element/element0.png)
 
 在App.vue写CSS，将CSS代码挂载到所有页面
 ```css
@@ -137,4 +137,4 @@ var demo = new Vue({
 
 修复bug完成
 
-![element1.png](../../assets/FrontEnd/Component/element/element1.png)
+![element1.png](/assets/FrontEnd/Component/element/element1.png)
