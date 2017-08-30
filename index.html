@@ -33,6 +33,17 @@
     repo: 'spiritree/note',
     auto2top: true,
     loadNavbar: true,
+    executeScript: true,
+    formatUpdated: '{YYYY}-{MM}-{DD}',
+    plugins: [
+      function(hook, vm) {
+        hook.beforeEach(function (html) {
+          return html
+            + '<hr/>'
+            + '上次更新：{docsify-updated} '
+        })
+      }
+    ]
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
