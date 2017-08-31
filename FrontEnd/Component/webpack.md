@@ -79,6 +79,29 @@ webpack 最核心的功能：
 
 ![importfontawesome.png](https://i.loli.net/2017/08/23/599d7a8465aeb.png)
 
+### Code Splitting
+对于大型的web应用而言，把所有的代码放到一个文件的做法效率很差，特别是在加载了一些只有在特定环境下才会使用到的阻塞的代码的时候。Webpack有个功能会把你的代码分离成Chunk，后者可以按需加载。
+
+Code Spliting的具体做法就是一个分离点，在分离点中依赖的模块会被打包到一起，可以异步加载。一个分离点会产生一个打包文件。 
+
+Code Spliting用到了webpack自带的`CommonsChunkPlugin`插件，在webpack的配置文件中这样添加。
+
+![webpack-codesplit.png](https://i.loli.net/2017/08/31/59a7d496afb54.png)
+
+按需加载在代码中的运用
+```javascript
+exportExcel() {
+    require.ensure([], () => {
+        const { export_json_to_excel } = require('../../../vendor/exportToExcel');
+        const tHeader = ['序号', '进件渠道', '产品名称', '客户名称', '放款日期', '合同金额', '期次', '期限', '起息日', '还款日', '应还本金', '应还费用', '应还利息', '应还罚息', '待抵扣保证金', '应还合计', '是否逾期', '实际还款日期'];
+        const filterVal = ['index', 'finaCoopCompNo', 'name', 'customerName', 'loanDate', 'demandAmt', 'cycleNum', 'term', 'loanDate', 'dueDate', 'principal', 'fee', 'interest', 'penalizedAmt', 'despoitAmt', 'sumFee', 'isOverdue', 'factDueDate'];
+        let repayDetailList = this.repayDetailList;
+        const data = this.formatJson(filterVal, repayDetailList);
+        export_json_to_excel(tHeader, data, '还款明细');
+    })
+},
+```
+这样xlsx（导出excel）模块就开启了按需加载，进一步降低了页面请求中需要JS的体积。
 ### GZIP压缩
 gzip对于JS和CSS等文件压缩比很大，能进一步压缩用户访问服务器需要的体积
 
@@ -105,4 +128,4 @@ webpack2升级到webpack3的兼容性问题，JS压缩插件需要升级并重�
 
 ![webpackgzip1.png](https://i.loli.net/2017/08/23/599d799d26128.png)
 
-**打包大小由3MB+ => 1.7MB => 500KB**
+**打包大小由3MB+ => 1.7MB => 500KB（Nginx开启gzip）**
