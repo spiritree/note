@@ -224,5 +224,5 @@ Dog.say(); // "I love bone"
 
 >  class内部方法无法枚举，ES5在prototype上定义的方法可以枚举。
 
-因为class中定义的方法会传入`_createClas`s中，然后 `Object.defineProperty`将其定义在`Constructor.prototype`上，因为在babel中
+因为class中定义的方法会传入`_createClass`中，然后 `Object.defineProperty`将其定义在`Constructor.prototype`上，因为在babel中
 `descriptor.enumerable = descriptor.enumerable || false;`默认设置为不可枚举。
