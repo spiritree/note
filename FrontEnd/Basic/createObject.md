@@ -147,6 +147,13 @@ Animal.prototype.say = function() {
   }
 ```
 
+## `new`操作符创建对象经历的步骤
+
+1. 创建新对象
+2. 将构造函数的作用域赋给新对象（this就指向了这个新对象）
+3. 执行构造函数（为新对象添加属性）
+4. 返回新对象
+
 ## ES6的class转化为ES5
 
 **ES6代码就是上文的例子**
@@ -226,3 +233,4 @@ Dog.say(); // "I love bone"
 
 因为class中定义的方法会传入`_createClass`中，然后 `Object.defineProperty`将其定义在`Constructor.prototype`上，因为在babel中
 `descriptor.enumerable = descriptor.enumerable || false;`默认设置为不可枚举。
+
