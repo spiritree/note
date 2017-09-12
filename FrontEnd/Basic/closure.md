@@ -32,14 +32,14 @@
 ## 如何从外部读取内部变量？
 ```javascript
 function f1() {
-  var n = 999
+  var n = 999;
     function f2() {
-      console.log(n) //999
+      console.log(n); //999
     }
-    return f2
+    return f2;
 }
-var result = f1()
-result() //999
+var result = f1();
+result(); //999
 ```
 因为f2被包含在f1中，所以f2可以读取f1中的变量（JavaScript可以在函数内读取全局变量，f1是f2的相对全局作用域）
 既然能读取，将f2作为返回值，这样就能在f1外部读取它内部变量。
@@ -47,27 +47,27 @@ result() //999
 ## 如何将变量的值保存在内存中？
 ```javascript
 function f1() {
-  var n = 999
+  var n = 999;
   nAdd = function () {
-    n += 1
+    n += 1;
   }
   function f2() {   
-    console.log(n)
+    console.log(n);
   }
-  return f2
+  return f2;
 }
-var result = f1()
-result() // 999
-nAdd() // 1000
-result() // 1000
+var result = f1();
+result(); // 999
+nAdd(); // 1000
+result(); // 1000
 
 /**
 * 执行var result2 = f1()时，f1返回了f2函数的引用
 * 它可以访问到f1()被调用时产生的环境，而局部变量n一直在这个环境中
 * 既然局部变量还能被外部访问，这样就不用被销毁，完成+1s
 */
-var result2 = f1()
-result2() // 999
+var result2 = f1();
+result2(); // 999
 ```
 由于nAdd是全局变量并且是匿名函数，所以nAdd类似于setter，可以在函数外部对函数内部的局部变量进行操作
 因为f2被赋值一个全局变量，所以f2始终在内存中，又因f2的f1的父函数，f1也始终在内存中。
@@ -75,4 +75,4 @@ result2() // 999
 ## 概念与总结
 闭包就是函数能够记住并访问它的词法作用域，即使当这个函数在它的词法作用域之外执行时。
 
-闭包可以读取函数内部的变量，还可以让变量的值始终保持在内存中。
+闭包可以封装变量，延续局部变量的寿命。
