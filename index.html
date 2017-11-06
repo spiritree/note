@@ -6,6 +6,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
   <style>
     .markdown-section a:not(:hover) {
       text-decoration: none;
@@ -31,22 +32,52 @@
   window.$docsify = {
     name: 'Note in learning',
     repo: 'spiritree/note',
-    auto2top: true,
     loadNavbar: true,
+    mergeNavbar: true,
     formatUpdated: '{YYYY}-{MM}-{DD}',
     plugins: [
-      function(hook, vm) {
+      function (hook, vm) {
         hook.beforeEach(function (html) {
           return html
             + '<hr/>'
             + '上次更新：{docsify-updated} '
         })
+      },
+      function (hook, vm) {
+        hook.init(() => {
+          console.log(Docsify.dom)
+        })
+
+        hook.mounted(() => {
+          const div = Docsify.dom.create('div')
+          div.id = 'gitalk-container'
+          const main = Docsify.dom.getNode('#main')
+          div.style = `width: ${main.clientWidth}px; margin: 0 auto 20px;`
+ +        Docsify.dom.appendTo(Docsify.dom.find('.content'), div)
+          const script = Docsify.dom.create('script')
+          script.async = true
+          const ctx = `gitalk.render('gitalk-container')`
+          script.textContent = ctx
+          Docsify.dom.appendTo(Docsify.dom.body, script)
+        })
       }
     ]
   }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '8cdbe2e8af65e829d0c6',
+    clientSecret: '898fc9de88197096586bef532e94f0a3f07305fb',
+    repo: 'note',
+    owner: 'spiritree',
+    admin: ['spiritree'],
+    id: 'Gitalk'
+  });
+</script>
 <script>
   // if (typeof navigator.serviceWorker !== 'undefined') {
   //   navigator.serviceWorker.register('sw.js')
