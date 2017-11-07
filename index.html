@@ -43,16 +43,12 @@
         })
       },
       function (hook, vm) {
-        hook.init(() => {
-          console.log(Docsify.dom)
-        })
-
         hook.mounted(() => {
           const div = Docsify.dom.create('div')
           div.id = 'gitalk-container'
           const main = Docsify.dom.getNode('#main')
           div.style = `width: ${main.clientWidth}px; margin: 0 auto 20px;`
- +        Docsify.dom.appendTo(Docsify.dom.find('.content'), div)
+          Docsify.dom.appendTo(Docsify.dom.find('.content'), div)
           const script = Docsify.dom.create('script')
           script.async = true
           const ctx = `gitalk.render('gitalk-container')`
@@ -69,11 +65,12 @@
 <script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 <script>
   var gitalk = new Gitalk({
-    clientID: '8cdbe2e8af65e829d0c6',
-    clientSecret: '898fc9de88197096586bef532e94f0a3f07305fb',
+    clientID: '78b08e6ff11006530149',
+    clientSecret: 'b6afc411780268944a69c1e82bea6396fd4e9e1b',
     repo: 'note',
     owner: 'spiritree',
-    admin: ['spiritree']
+    admin: ['spiritree'],
+    title: location.href
   });
 </script>
 <script>
