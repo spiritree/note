@@ -49,11 +49,6 @@
           var main = Docsify.dom.getNode('#main')
           div.style = `width: ${main.clientWidth}px; margin: 0 auto 20px;`
           Docsify.dom.appendTo(Docsify.dom.find('.content'), div)
-          var script = Docsify.dom.create('script')
-          script.async = true
-          var ctx = `gitalk.render('gitalk-container')`
-          script.textContent = ctx
-          Docsify.dom.appendTo(Docsify.dom.body, script)
         })
 
         hook.doneEach(function() {
